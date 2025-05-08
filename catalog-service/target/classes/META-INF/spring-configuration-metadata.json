@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "catalog",
+      "type": "com.sivalabs.bookstore.catalog.ApplicationProperties",
+      "sourceType": "com.sivalabs.bookstore.catalog.ApplicationProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "catalog.page-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.sivalabs.bookstore.catalog.ApplicationProperties",
+      "defaultValue": 10
+    }
+  ],
+  "hints": []
+}
