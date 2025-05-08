@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Ensure that we're in the correct directory if needed
-                    dir(${env.POM_PATH}) {   // Replace with the correct service directory if needed
+                    dir(env.POM_PATH) {   // Replace with the correct service directory if needed
                         bat 'mvn clean install'  // If you are on Linux, replace `bat` with `sh`
                     }
                 }
@@ -35,7 +35,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    dir(${env.POM_PATH}) {   // Replace with the correct service directory if needed
+                    dir(env.POM_PATH) {   // Replace with the correct service directory if needed
                         bat 'mvn test'  // If you are on Linux, replace `bat` with `sh`
                     }
                 }
@@ -45,7 +45,7 @@ pipeline {
         stage('Package') {
             steps {
                 script {
-                    dir(${env.POM_PATH}) {   // Replace with the correct service directory if needed
+                    dir(env.POM_PATH) {   // Replace with the correct service directory if needed
                         bat 'mvn package'  // If you are on Linux, replace `bat` with `sh`
                     }
                 }
