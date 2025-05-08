@@ -2,14 +2,16 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.8.5'
-       jdk '17.0.12'
+        maven 'Maven 3.8.5'  // Name of Maven installed in Jenkins global tools configuration
+        jdk '17.0.12'        // Name of JDK installed in Jenkins global tools configuration
     }
 
     environment {
         EMAIL_ADMIN = 'melhenawy@ejada.com'
         EMAIL_DEVOPS = 'melhenawy@ejada.com'
         EMAIL_DEV_TEAM = 'melhenawy@ejada.com'
+        POM_PATH='catalog-service'
+
     }
 
     stages {
@@ -21,19 +23,32 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean install'
+                script {
+                    // Ensure that we're in the correct directory if needed
+                    dir(${env.POM_PATH}) {   // Replace with the correct service directory if needed
+                        bat 'mvn clean install'  // If you are on Linux, replace `bat` with `sh`
+                    }
+                }
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvn test'
+                script {
+                    dir(${env.POM_PATH}) {   // Replace with the correct service directory if needed
+                        bat 'mvn test'  // If you are on Linux, replace `bat` with `sh`
+                    }
+                }
             }
         }
 
         stage('Package') {
             steps {
-                bat 'mvn package'
+                script {
+                    dir(${env.POM_PATH}) {   // Replace with the correct service directory if needed
+                        bat 'mvn package'  // If you are on Linux, replace `bat` with `sh`
+                    }
+                }
             }
         }
     }
