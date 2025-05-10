@@ -17,12 +17,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo "Starting the Checkout process"
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
+                echo "Starting the Build process"
                 script {
                     // Ensure that we're in the correct directory if needed
                     dir(env.POM_PATH) {   // Replace with the correct service directory if needed
@@ -34,6 +36,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
+                echo "Starting the SonarQube Analysis process"
                 withSonarQubeEnv('MySonarQube') {  // Ensure 'MySonarQube' matches your SonarQube configuration in Jenkins
                     bat 'mvn sonar:sonar'  // Use Maven to run SonarQube analysis
                 }
@@ -42,6 +45,7 @@ pipeline {
 
         stage('Test') {
             steps {
+                echo "Starting the Test process"
                 script {
                     dir(env.POM_PATH) {   // Replace with the correct service directory if needed
                         bat 'mvn test'  // If you are on Linux, replace `bat` with `sh`
