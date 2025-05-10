@@ -11,8 +11,7 @@ pipeline {
         EMAIL_ADMIN = 'melhenawy@ejada.com'
         EMAIL_DEVOPS = 'melhenawy@ejada.com'
         EMAIL_DEV_TEAM = 'melhenawy@ejada.com'
-        POM_PATH='catalog-service'
-
+        POM_PATH = 'catalog-service'
     }
 
     stages {
@@ -33,14 +32,13 @@ pipeline {
             }
         }
 
-    stage('SonarQube Analysis') {
-               steps {
-                   withSonarQubeEnv('MySonarQube') {
-                       bat 'sonar-scanner'
-                   }
-               }
-           }
-
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('MySonarQube') {
+                    bat 'sonar-scanner'
+                }
+            }
+        }
 
         stage('Test') {
             steps {
@@ -51,8 +49,7 @@ pipeline {
                 }
             }
         }
-
-
+    }
 
     post {
         success {
