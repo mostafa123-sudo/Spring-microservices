@@ -11,3 +11,13 @@ class CatalogServiceApplicationTests extends AbstractIT {
 
     }
 }
+
+// /mnt/d/spring-micro/catalog-service/target/site/jacoco$
+
+/*
+*
+*
+* target/site/jacoco/jacoco.xml
+
+ *
+* */

@@ -4,6 +4,7 @@ pipeline {
     tools {
         maven 'Maven 3.8.5'
         jdk '17.0.12'
+        sonarQubeScanner 'sonar-scanner'
     }
 
     environment {
@@ -32,6 +33,15 @@ pipeline {
             }
         }
 
+    stage('SonarQube Analysis') {
+               steps {
+                   withSonarQubeEnv('MySonarQube') {
+                       bat 'sonar-scanner'
+                   }
+               }
+           }
+
+
         stage('Test') {
             steps {
                 script {
@@ -42,16 +52,7 @@ pipeline {
             }
         }
 
-        stage('Package') {
-            steps {
-                script {
-                    dir(env.POM_PATH) {   // Replace with the correct service directory if needed
-                        bat 'mvn package'  // If you are on Linux, replace `bat` with `sh`
-                    }
-                }
-            }
-        }
-    }
+
 
     post {
         success {
