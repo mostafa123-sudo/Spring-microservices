@@ -4,7 +4,7 @@ pipeline {
     tools {
         maven 'Maven 3.8.5'
         jdk '17.0.12'
-        SonarQube Scanner 'sonar-scanner'
+         sonarScanner 'sonar-scanner'
     }
 
     environment {
