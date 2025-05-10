@@ -4,7 +4,7 @@ pipeline {
     tools {
         maven 'Maven 3.8.5'
         jdk '17.0.12'
-         sonar-scanner 'sonar-scanner'
+        sonarScanner 'sonar-scanner'  // Ensure this matches the SonarQube Scanner configuration in Jenkins
     }
 
     environment {
@@ -34,8 +34,8 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('MySonarQube') {
-                    bat 'sonar-scanner'
+                withSonarQubeEnv('MySonarQube') {  // Ensure 'MySonarQube' matches your SonarQube configuration in Jenkins
+                    bat 'mvn sonar:sonar'  // Use Maven to run SonarQube analysis
                 }
             }
         }
