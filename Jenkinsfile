@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.8.5'  // Name of Maven installed in Jenkins global tools configuration
-        jdk '17.0.12'        // Name of JDK installed in Jenkins global tools configuration
+        maven 'Maven 3.8.5'
+        jdk '17.0.12'
     }
 
     environment {
